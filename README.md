@@ -45,7 +45,7 @@ https://tejasduratkar.github.io/restroflow-restro-website/
 
 ### Homepage
 
-![RestroFlow Screenshot](./assets/images/sushi.jpg)
+![RestroFlow Screenshot](./assets/images/homepage-screenshot.png)
 
 ---
 
