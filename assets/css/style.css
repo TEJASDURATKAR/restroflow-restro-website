@@ -451,6 +451,9 @@ body.active { overflow: hidden; }
 
 .navbar-link:is(:hover, :focus) { color: var(--dark-orange); }
 
+html {
+  scroll-behavior: smooth;
+}
 
 
 
@@ -536,31 +539,40 @@ body.active { overflow: hidden; }
 }
 
 .hero-subtitle {
-  color: var(--dark-orange);
+  color: #ffb347; /* warm sushi orange */
   font-family: var(--ff-shadows-into-light);
   font-size: var(--fs-3);
   letter-spacing: 1px;
   margin-block-end: 25px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-title {
-  color: var(--champagne-pink);
+  color: #ffffff; /* pure white for strong contrast */
   max-width: 12ch;
   margin-inline: auto;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
 }
 
 .hero-text {
-  color: var(--desert-sand);
+  color: #f5f5f5; /* soft white */
   margin-block: 15px 30px;
   max-width: 44ch;
   margin-inline: auto;
+  line-height: 1.7;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.hero .btn { margin-inline: auto; }
+.hero .btn {
+  margin-inline: auto;
+  background-color: #ff7a00;
+  color: #ffffff;
+  border: none;
+}
 
 .hero .btn:is(:hover, :focus) {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: #ffffff;
+  color: #111111;
 }
 
 
@@ -584,7 +596,7 @@ body.active { overflow: hidden; }
   content: "";
   position: absolute;
   inset: 0;
-  background-color: var(--deep-saffron);
+  background-color: #c0392b;
   clip-path: var(--clip-path-1);
   transform: scaleY(0.3);
   transform-origin: bottom;
@@ -597,7 +609,16 @@ body.active { overflow: hidden; }
   transform: scaleY(1);
 }
 
-.promo-card .card-icon svg { margin-inline: auto; }
+.promo-card .card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.promo-card .card-icon img {
+  display: block;
+  margin-inline: auto;
+}
 
 .promo-card:hover .card-icon path { fill: var(--white); }
 
@@ -1150,11 +1171,18 @@ body.active { overflow: hidden; }
 }
 
 .footer-top::after {
-  content: url(../images/delivery-boy.svg);
+  content: "";
   position: absolute;
-  bottom: -11px;
-  left: -160px;
-  width: 160px;
+  bottom: -5px;
+  left: -120px;
+
+  width: 150px;   /* smaller size */
+  height: 150px;
+
+  background-image: url("../images/dilivery-boy-image.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
   animation: running-cycle 20s linear infinite;
 }
 
@@ -1416,7 +1444,7 @@ textarea.input-field {
     bottom: -2px;
     width: 100%;
     height: 100%;
-    background-image: url("../images/hero-bg-shape.png");
+    /* background-image: url("../images/hero-bg-shape.png"); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right bottom;
@@ -1430,19 +1458,104 @@ textarea.input-field {
    * ABOUT
    */
 
-  .about .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
+  .about {
+  background: linear-gradient(
+    135deg,
+    #f5f5f5 0%,
+    #ececec 100%
+  );
+  overflow: hidden;
+}
 
-  .about { text-align: left; }
+.about .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
 
-  .about .section-title { margin-block-start: 0; }
+.about-banner {
+  position: relative;
+}
 
-  .about :is(.section-title, .btn) { margin-inline: 0; }
+.about-img {
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+  transition: 0.4s ease;
+}
 
-  .about-item { justify-content: flex-start; }
+.about-img:hover {
+  transform: translateY(-10px) rotate(-2deg);
+}
+
+.about .abs-img {
+  width: 170px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
+.section-subtitle {
+  color: #ff7a00;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.about .section-title {
+  margin-block-start: 0;
+  color: #111;
+  line-height: 1.2;
+}
+
+.about .section-title .span {
+  color: #ff7a00;
+}
+
+.about .section-text {
+  color: #555;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  margin: 25px 0;
+}
+
+.about-list {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.about-item {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #222;
+}
+
+.about-item ion-icon {
+  background: #ff7a00;
+  color: white;
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.about .btn {
+  margin-inline: 0;
+  background: #ff7a00;
+  color: white;
+  border-radius: 50px;
+  padding: 14px 34px;
+  transition: 0.3s ease;
+}
+
+.about .btn:hover {
+  background: #111;
+  transform: translateY(-3px);
+}
 
 
 
@@ -1481,13 +1594,58 @@ textarea.input-field {
    * DELIVERY
    */
 
-  .delivery .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 50px;
+  /* Full background sky image */
+.delivery {
+  background: url("https://static.vecteezy.com/system/resources/previews/036/078/876/non_2x/sky-and-clouds-background-web-banners-vector.jpg")
+    center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  padding-block: 100px;
+}
+
+/* Optional light overlay for better text visibility */
+.delivery::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.delivery .container {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Remove extra sky image */
+.delivery-banner img:first-child {
+  display: none;
+}
+
+/* Delivery boy image */
+.delivery-img {
+  max-width: 100%;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
 
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
 
 
   /**
@@ -1665,7 +1823,23 @@ textarea.input-field {
    * TESTIMONIALS
    */
 
-  .testi-list { padding-block-end: 0; }
+ /* Perfect circular avatar */
+.avatar {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Image fit inside circle */
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
 
 
 
@@ -1682,10 +1856,126 @@ textarea.input-field {
   /**
    * FOOTER
    */
+/* FULL FOOTER BACKGROUND */
 
-  .footer-top .container { grid-template-columns: 1fr 1fr 1fr 1.6fr; }
+.footer {
+  position: relative;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/017/449/084/original/blue-city-town-silhouette-background-vector.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
 
-  .footer-form { margin-block-start: -170px; }
+/* DARK OVERLAY */
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  z-index: 1;
+}
+
+/* CONTENT ABOVE OVERLAY */
+
+.footer-top,
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+/* REMOVE EXTRA BG */
+
+.footer-top {
+  background-image: none !important;
+  padding-top: 90px;
+}
+
+/* GRID */
+
+.footer-top .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.4fr;
+  gap: 40px;
+}
+
+/* REMOVE FLOATING EFFECT */
+
+.footer-form {
+  margin-block-start: 0;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* TEXT COLORS */
+
+.footer,
+.footer a,
+.footer p,
+.footer li,
+.footer address {
+  color: white;
+}
+
+/* LOGO */
+
+.footer .logo {
+  color: white;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.footer .logo .span {
+  color: #ff7a00;
+}
+
+/* SOCIAL ICONS */
+
+.social-link {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  transition: 0.3s;
+}
+
+.social-link:hover {
+  background: #ff7a00;
+  transform: translateY(-4px);
+}
+
+/* INPUTS */
+
+.input-field {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: white;
+}
+
+.input-field::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* FOOTER BOTTOM */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 60px;
+  padding: 25px 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 991px) {
+
+  .footer-top .container {
+    grid-template-columns: 1fr;
+  }
+
+}
 
 
 
